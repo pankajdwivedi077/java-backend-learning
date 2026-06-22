@@ -2,7 +2,8 @@ import java.util.function.Function;
 
 public class File3 {
 
-    public static Function<Integer, Integer> addFunction = (a) -> a + 3; // using Generics 
+                     // using Generics 
+    public static Function<Integer, Integer> addFunction = (a) -> a + 3; 
 
     public static void main(String[] args) {
 
