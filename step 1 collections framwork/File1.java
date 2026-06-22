@@ -17,6 +17,8 @@ public class File1 {
         }
 
         System.out.println(users.get(2));
+
+        System.out.println(users);
         
 
     }

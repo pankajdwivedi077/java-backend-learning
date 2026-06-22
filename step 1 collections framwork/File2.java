@@ -16,5 +16,7 @@ public class File2 {
             System.out.println(role);
         }
 
+        System.out.println(roles);
+
     }
 } // set || duplicate not allowed

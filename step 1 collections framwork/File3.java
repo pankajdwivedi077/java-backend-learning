@@ -12,9 +12,11 @@ public class File3 {
 
        System.out.println(userMap.get(1));
 
-       for(Map.Entry<Integer, String> entry : userMap.entrySet()){
-        System.out.println(entry.getKey() + " " + entry.getValue());
-       }
+        for(Map.Entry<Integer, String> ent : userMap.entrySet()){
+           System.out.println(ent.getValue() + " " + ent.getKey());
+        } 
+
+        System.out.println(userMap);
 
     }
 }
