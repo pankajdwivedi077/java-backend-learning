@@ -11,6 +11,9 @@ public class File10 {
             System.out.println(item);
         }
 
+        items.forEach((item) -> System.out.println(item));
+        System.out.println("je");
+
         Stream<String> st = items.stream();
         st.forEach((item) -> System.out.println(item));
 
