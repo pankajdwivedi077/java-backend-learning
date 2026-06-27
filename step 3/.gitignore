@@ -1,0 +1,98 @@
+# ==========================================
+# Java Core & Compiled Class Files
+# ==========================================
+*.class
+*.log
+*.ctxt
+.mtj.tmp/
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# ==========================================
+# Build Tools (Maven and Gradle)
+# ==========================================
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.next
+pom.xml.releaseBackup
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# ==========================================
+# Spring & Spring Boot Specifics
+# ==========================================
+*.data
+*.db
+# Spring Boot configuration processor tracking
+.spring-boot-devtools.properties
+
+# ==========================================
+# Databases / JDBC / Hibernate / JPA
+# ==========================================
+# Ignore embedded database files (like H2 or Derby) generated during runtime
+*.mv.db
+*.trace.db
+*.h2.db
+data/
+db/
+
+# Hibernate/JPA schema generation outputs or caches
+.ehcache/
+hibernate.log
+
+# ==========================================
+# IDEs and Text Editors
+# ==========================================
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Eclipse
+.metadata/
+.classpath
+.project
+.settings/
+*.launch
+.factorypath
+
+# NetBeans
+**/nbproject/private/
+**/nbbuild/
+**/dist/
+**/nbdist/
+/.nb-gradle/
+
+# VS Code
+.vscode/
+
+# ==========================================
+# Operating System Files
+# ==========================================
+.DS_Store
+Thumbs.db
+
+# ==========================================
+# Sensitive Configuration (Application Secrets)
+# ==========================================
+# Ignore files containing sensitive passwords, JDBC credentials, and API keys
+**/src/main/resources/application-local.properties
+**/src/main/resources/application-local.yml
+**/src/main/resources/config/secrets.*
