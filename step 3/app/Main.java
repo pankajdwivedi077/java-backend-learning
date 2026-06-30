@@ -1,10 +1,14 @@
 package app;
 
+import service.BankService;
+import service.impl.BankServiceImpl;
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String [] args){
         Scanner sc = new Scanner(System.in);
+        BankService bankService = new BankServiceImpl();
         System.out.println("Welcome to Bank");
         boolean running = true;
         while (running){
@@ -27,10 +31,10 @@ public class Main {
                     running = false;
                     break;
                 case "1":
-                    openAccount(sc);
+                    openAccount(sc, bankService);
                     break;
                 case "2":
-                    deposit(sc);
+                    deposit(sc, bankService);
                     break;
                 case "3":
                     withdraw(sc);
@@ -42,7 +46,7 @@ public class Main {
                     statement(sc);
                     break;
                 case "6": 
-                    listAccounts(sc);
+                    listAccounts(sc, bankService);
                     break;
                 case "7":
                     searchAccounts(sc);
@@ -54,11 +58,30 @@ public class Main {
 
     }
 
-    private static void openAccount(Scanner sc) {
+    private static void openAccount(Scanner sc, BankService bankService) {
+         System.out.println("Customer name: ");
+         String name = sc.nextLine().trim();
+         System.out.println("Customer email: ");
+         String email = sc.nextLine().trim();
+         System.out.println("Account Type (SAVING/CURRENT) : ");
+         String type = sc.nextLine().trim();
+         System.out.println("Intial deposit (optional, blank for 0) : ");
+         String amountStr = sc.nextLine().trim();
+         Double initial = Double.valueOf(amountStr);
+         String accNumber = bankService.openAccount(name,email, type);
+         System.out.println("Account opened: " + accNumber);
+         if(initial > 0)
+             deposit(sc, bankService);
 
     }
 
-    private static void deposit(Scanner sc) {
+    private static void deposit(Scanner sc, BankService bankService) {
+        System.out.println("Account Number: ");
+        String accNumber = sc.nextLine().trim();
+        System.out.println("Amount: ");
+        Double amount = Double.valueOf(sc.nextLine().trim());
+        bankService.deposit(accNumber, amount, "Deposit");
+        System.out.println("Deposited: ");
 
     }
 
@@ -74,8 +97,10 @@ public class Main {
 
     }
 
-    private static void listAccounts(Scanner sc) {
-
+    private static void listAccounts(Scanner sc, BankService bankService) {
+      bankService.listAccount().forEach(a -> {
+          System.out.println(a.getAccountNumber() + " | " + a.getAccountType() + " | " + a.getBalance());
+      });
     }
 
     private static void searchAccounts(Scanner sc) {
