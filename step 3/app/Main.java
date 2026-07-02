@@ -37,19 +37,19 @@ public class Main {
                     deposit(sc, bankService);
                     break;
                 case "3":
-                    withdraw(sc);
+                    withdraw(sc, bankService);
                     break;
                 case "4":
-                    transfer(sc);
+                    transfer(sc, bankService);
                     break;
                 case "5":
-                    statement(sc);
+                    statement(sc, bankService);
                     break;
                 case "6": 
                     listAccounts(sc, bankService);
                     break;
                 case "7":
-                    searchAccounts(sc);
+                    searchAccounts(sc, bankService);
                     break;
                
                     
@@ -71,7 +71,7 @@ public class Main {
          String accNumber = bankService.openAccount(name,email, type);
          System.out.println("Account opened: " + accNumber);
          if(initial > 0)
-             deposit(sc, bankService);
+             bankService.deposit(accNumber, initial, "Initial Deposit");
 
     }
 
@@ -81,19 +81,35 @@ public class Main {
         System.out.println("Amount: ");
         Double amount = Double.valueOf(sc.nextLine().trim());
         bankService.deposit(accNumber, amount, "Deposit");
-        System.out.println("Deposited: ");
+        System.out.println("Deposited");
 
     }
 
-    private static void withdraw(Scanner sc) {
-
+    private static void withdraw(Scanner sc, BankService bankService) {
+        System.out.println("Account Number: ");
+        String accNumber = sc.nextLine().trim();
+        System.out.println("Amount: ");
+        Double amount = Double.valueOf(sc.nextLine().trim());
+        bankService.withdraw(accNumber, amount, "withdrawal");
+        System.out.println("withdraw");
     }
 
-    private static void transfer(Scanner sc) {
-
+    private static void transfer(Scanner sc, BankService bankService) {
+        System.out.println("From Account: ");
+        String from = sc.nextLine().trim();
+        System.out.println("To Account: ");
+        String to = sc.nextLine().trim();
+        System.out.println("Amount:");
+        Double amount = Double.valueOf(sc.nextLine().trim());
+        bankService.transfer(from, to, amount, "Transfer");
     }
 
-    private static void statement(Scanner sc) {
+    private static void statement(Scanner sc, BankService bankService) {
+        System.out.println("Account Number: ");
+        String accNumber = sc.nextLine().trim();
+        bankService.getStatement(accNumber).forEach((t) -> {
+            System.out.println(t.getTimestamp() + " | " + t.getType() + " | " + t.getAmount() + " | " + t.getNote());
+        });
 
     }
 
@@ -103,8 +119,10 @@ public class Main {
       });
     }
 
-    private static void searchAccounts(Scanner sc) {
-
+    private static void searchAccounts(Scanner sc, BankService bankService) {
+        System.out.println("Customer name contains: ");
+        String q = sc.nextLine().trim();
+        bankService.searchAccountsByCustomerName(q);
     }
 
 
