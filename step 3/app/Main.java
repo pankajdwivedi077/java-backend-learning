@@ -67,6 +67,7 @@ public class Main {
          String type = sc.nextLine().trim();
          System.out.println("Intial deposit (optional, blank for 0) : ");
          String amountStr = sc.nextLine().trim();
+         if(amountStr.isBlank()) amountStr = "0";
          Double initial = Double.valueOf(amountStr);
          String accNumber = bankService.openAccount(name,email, type);
          System.out.println("Account opened: " + accNumber);
@@ -122,7 +123,8 @@ public class Main {
     private static void searchAccounts(Scanner sc, BankService bankService) {
         System.out.println("Customer name contains: ");
         String q = sc.nextLine().trim();
-        bankService.searchAccountsByCustomerName(q);
+        bankService.searchAccountsByCustomerName(q).forEach(a -> System.out.println(a.getAccountNumber() + " | " + a.getAccountType() + " | " + a.getBalance()));
+
     }
 
 
