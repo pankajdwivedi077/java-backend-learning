@@ -4,6 +4,13 @@
   <artifactId>Junit</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
+  <properties>
+<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+<!--  Configured for your Java 25 machine  -->
+<maven.compiler.source>25</maven.compiler.source>
+<maven.compiler.target>25</maven.compiler.target>
+</properties>
+  
   <dependencies>
      <!-- Source: https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
@@ -13,5 +20,22 @@
 		    <scope>test</scope>
 		</dependency>
   </dependencies>
+  
+  <build>
+    <plugins>
+    
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.14.0</version>
+      </plugin>
+      
+      <plugin>
+       
+       <artifactId>maven-surefire-plugin</artifactId>
+       <version>3.5.3</version>
+      </plugin>
+      
+    </plugins>
+  </build>
   
 </project>

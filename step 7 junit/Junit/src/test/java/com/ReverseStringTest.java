@@ -13,5 +13,13 @@ class ReverseStringTest {  // Junit5
 		
 		assertEquals("avaj", st.reverse("java"));
 	}
+	
+	@Test
+	void testReverseStringMultipleWord() {
+		ReverseString st = new ReverseString();
+		
+		assertEquals("nahc lleb", st.reverse("bell chan"));
+	}
+	
 
 }
