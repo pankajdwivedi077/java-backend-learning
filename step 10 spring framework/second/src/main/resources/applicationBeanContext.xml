@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+
+    <bean id="myBean" class="com.example.GreetingService">
+
+    </bean>
+
+    <bean id="emailService" class="com.example.loose.EmailNotificationSerice">
+
+    </bean>
+
+    <bean id="userService" class="com.example.loose.UserService">
+        <!-- the name attribute inside the <property> tag should never include the word "set". Spring automatically looks for the word "set" on its own. It uses JavaBean naming conventions, meaning it takes your property name, capitalizes the first letter, and looks for that setter method. -->
+        <property name="notificationSerive" ref="emailService"></property>
+
+<!--        <constructor-arg ref="emailService" />-->
+        
+    </bean>
+
+
+
+</beans>
