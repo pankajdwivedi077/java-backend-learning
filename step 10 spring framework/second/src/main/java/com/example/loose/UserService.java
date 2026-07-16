@@ -1,6 +1,7 @@
 package com.example.loose;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component("userService")
@@ -18,7 +19,7 @@ public class UserService {
 
     // constructor injection
     @Autowired
-    public UserService(NotificationSerive notificationSerive) {
+    public UserService(@Qualifier("emailNotificationSerice") NotificationSerive notificationSerive) {
         this.notificationSerive = notificationSerive;
     }
 

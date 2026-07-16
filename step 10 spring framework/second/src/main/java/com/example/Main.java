@@ -14,8 +14,15 @@ public class Main {
         GreetingService greetingService =  conext.getBean(GreetingService.class);
         greetingService.sayHello();
 
-        UserService userService = (UserService) conext.getBean("userService");
+        UserService userService =  conext.getBean(UserService.class);
+
         userService.notifyUser("hello");
+
+        System.out.println("starting");
+
+        LifeCycleBean lifeCycleBean = conext.getBean(LifeCycleBean.class);
+        lifeCycleBean.performTask();
+        System.out.println("closing");
 
     }
 
