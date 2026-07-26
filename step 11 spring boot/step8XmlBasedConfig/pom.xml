@@ -2,11 +2,11 @@
     <modelVersion>4.0.0</modelVersion>
     <!--  Core Project Coordinates  -->
     <groupId>org.example</groupId>
-    <artifactId>step7SpringLifeCycle</artifactId>
+    <artifactId>step8XmlBasedConfig</artifactId>
     <version>1.0-SNAPSHOT ${author.name}</version>
 
     <dependencies>
-        <!-- Source: https://mvnrepository.com/artifact/org.springframework/spring-context -->
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -14,13 +14,6 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- Source: https://mvnrepository.com/artifact/jakarta.annotation/jakarta.annotation-api -->
-        <dependency>
-            <groupId>jakarta.annotation</groupId>
-            <artifactId>jakarta.annotation-api</artifactId>
-            <version>3.0.0</version>
-            <scope>compile</scope>
-        </dependency>
 
     </dependencies>
 
