@@ -6,16 +6,26 @@
 
     <!-- bean definitions here -->
 
-    <bean id="orderService" name="orderServiceBean, orderServiceBean2" class="org.example.OrderService" >
+<!--    <bean id="paymentService" class="org.example.PaymentService" >-->
+<!--      <constructor-arg index="0" value="upi" />-->
+<!--        <constructor-arg index="1" value="1" />-->
+<!--    </bean>-->
 
+<!--    <bean id="orderService" name="orderServiceBean, orderServiceBean2" class="org.example.OrderService" >-->
+<!--       <constructor-arg ref="paymentService" />-->
+<!--    </bean>-->
+
+<!--    <bean id="orderService2" class="org.example.OrderService" >-->
+<!--       <property name="PaymentService" ref="paymentService" />-->
+<!--    </bean>-->
+
+     <bean id="upiPaymentService" class="org.example.UpiService" />
+    <bean id="cardPaymentService" class="org.example.CardService" />
+    <bean id="orderService" class="org.example.OrderService" >
+        <constructor-arg ref="upiPaymentService" />
     </bean>
-
-    <bean id="orderService2" class="org.example.OrderService" >
-
-    </bean>
-
-    <bean id="paymentService" class="org.example.PaymentService" >
-
-    </bean>
-
+   <bean id="userService" class="org.example.UserServide"
+         scope="prototype" init-method="init" destroy-method="cleanup">
+       <constructor-arg value="bell" />
+   </bean>
 </beans>
