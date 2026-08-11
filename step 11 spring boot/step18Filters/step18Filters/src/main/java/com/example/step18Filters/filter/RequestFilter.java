@@ -5,12 +5,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.UUID;
+import java.util.stream.Stream;
 
-//@Component
-public class Header implements Filter {
-
+@Component
+public class RequestFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest,
                          ServletResponse servletResponse,
@@ -20,11 +20,18 @@ public class Header implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse res = (HttpServletResponse) servletResponse;
 
-        String requestId = UUID.randomUUID().toString();
-        res.setHeader("X-REQUEST_ID", requestId);
+        String token = req.getHeader("token");
 
+//         ServletInputStream body = req.getInputStream();
 
-        filterChain.doFilter(servletRequest, servletResponse);
+                  BufferedReader reader = req.getReader();
 
+                  StringBuilder body = new StringBuilder();
+                  String line = reader.readLine();
+                  while(line != null){
+                      body.append(line);
+                      line = reader.readLine();
+                  }
+        System.out.println(body);
     }
 }
