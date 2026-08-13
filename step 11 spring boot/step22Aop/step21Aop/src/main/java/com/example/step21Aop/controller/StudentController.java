@@ -4,7 +4,6 @@ import com.example.step21Aop.dto.Student;
 import com.example.step21Aop.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,15 +19,13 @@ public class StudentController {
 
     @PostMapping
     public ResponseEntity<Student> createStudent(@RequestBody Student st){
-//        String s = studentService.createStudent(st);
         Student s = studentService.createStudent(st);
-       return ResponseEntity.ok(s);
+        return ResponseEntity.ok(s);
     }
 
     @GetMapping
-    public ResponseEntity<String> dummyMethod(){
-        String s = "hello";
-        return ResponseEntity.ok(studentService.dummyMethod(s));
+    public ResponseEntity<String> getStudent(){
+        return ResponseEntity.ok(studentService.getStudent());
     }
 
 }
