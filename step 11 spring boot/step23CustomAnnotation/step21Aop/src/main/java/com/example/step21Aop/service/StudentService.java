@@ -7,18 +7,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class StudentService {
 
-    public String getStudent(String s){
-        System.out.println(s);
-        return  s;
-    }
-
-//    @Timestamp
     public Student createStudent(Student s){
 
         System.out.println("Student saved");
 
          return s;
 
+    }
+
+    public String getStudent(String s){
+        System.out.println(s);
+        return  s;
     }
 
     public int dummyMethod(){
