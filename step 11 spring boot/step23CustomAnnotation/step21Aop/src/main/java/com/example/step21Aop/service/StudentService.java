@@ -1,5 +1,6 @@
 package com.example.step21Aop.service;
 
+import com.example.step21Aop.annotation.TrackExecutionTime;
 import com.example.step21Aop.dto.Student;
 import jdk.jfr.Timestamp;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,10 @@ public class StudentService {
 
     }
 
+   @TrackExecutionTime(
+           warnAfter = 1500,
+           operation = "Get student data"
+   )
     public String getStudent(String s){
         System.out.println(s);
         return  s;
