@@ -20,7 +20,10 @@ public class Main {
 
 //        studentRepository.createUser2(new Student("ace", "ace@gmail.com", 23));
 
-        studentRepository.createUser3(new Student("bete",
+//        studentRepository.createUser3(new Student("bete",
+//                "bete@gmail.com", 23));
+
+        studentRepository.createUser4(new Student("bete",
                 "bete@gmail.com", 23));
 
     }
