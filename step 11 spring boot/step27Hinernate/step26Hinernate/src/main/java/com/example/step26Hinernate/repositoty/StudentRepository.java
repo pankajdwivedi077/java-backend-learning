@@ -18,7 +18,10 @@ public class StudentRepository {
 
    // read
    public Student findById(Long id){
-        return entityManager.find(Student.class, id);
+        Student s1 = entityManager.find(Student.class, id);
+        Student s2 = entityManager.find(Student.class, id);
+        entityManager.detach(s1);// remove of persistence context 
+        return s2;
    }
 
    // delete
