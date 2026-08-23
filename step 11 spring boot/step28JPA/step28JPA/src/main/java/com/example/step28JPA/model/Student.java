@@ -1,10 +1,15 @@
 package com.example.step28JPA.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Student {
 
@@ -13,5 +18,9 @@ public class Student {
   private Long id;
 
   private String name;
+
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "dept_id", nullable = false)
+  private Department department;
 
 }

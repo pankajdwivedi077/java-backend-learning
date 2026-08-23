@@ -1,18 +1,21 @@
 package com.example.step28JPA.repository;
 
 import com.example.step28JPA.model.Department;
-import com.example.step28JPA.model.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class StudentRepository {
+public class DepartmentRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void save(Student student) {
-        entityManager.persist(student);
+    public void save(Department department){
+        entityManager.persist(department);
+    }
+
+    public Department getDepartmentById(Long deptId) {
+        return entityManager.find(Department.class, deptId);
     }
 }
