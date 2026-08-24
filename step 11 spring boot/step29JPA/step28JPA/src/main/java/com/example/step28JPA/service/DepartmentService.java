@@ -1,7 +1,6 @@
 package com.example.step28JPA.service;
 
 import com.example.step28JPA.model.Department;
-import com.example.step28JPA.model.Student;
 import com.example.step28JPA.repository.DepartmentRepository;
 import com.example.step28JPA.repository.StudentRepository;
 import jakarta.transaction.Transactional;
@@ -24,17 +23,7 @@ public class DepartmentService {
 
     @Transactional
     public void create(Department department) {
-       departmentRepository.save(department);
+
     }
 
-    @Transactional
-    public void create(Department department, String student) {
-        Student studentName = new Student();
-        studentName.setName(student);
-        studentName.setDepartment(department);
-
-        department.getStudentList().add(studentName);
-        studentRepository.save(studentName);
-        departmentRepository.save(department);
-    }
 }

@@ -14,15 +14,15 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Department {
+public class Course {
 
-    @Id
+    @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    @OneToMany(mappedBy = "department")
-    private List<Student> studentList = new ArrayList<>();
+    @ManyToMany(mappedBy = "courses")
+    private List<Student2> students = new ArrayList<>();
 
 }

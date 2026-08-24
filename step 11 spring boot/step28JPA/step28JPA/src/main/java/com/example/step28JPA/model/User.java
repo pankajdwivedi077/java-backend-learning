@@ -6,23 +6,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Department {
+public class User {
 
-    @Id
+    @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    @OneToMany(mappedBy = "department")
-    private List<Student> studentList = new ArrayList<>();
-
+    @OneToOne(mappedBy = "user")
+    private Profile profile;
 }

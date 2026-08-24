@@ -14,15 +14,18 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Department {
+public class Student2 {
 
-    @Id
+    @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    @OneToMany(mappedBy = "department")
-    private List<Student> studentList = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(name = "student_course", joinColumns = @JoinColumn(name = "student_id"),
+    inverseJoinColumns =  @JoinColumn(name = "course_id"))
+
+    private List<Course> courses = new ArrayList<>();
 
 }
