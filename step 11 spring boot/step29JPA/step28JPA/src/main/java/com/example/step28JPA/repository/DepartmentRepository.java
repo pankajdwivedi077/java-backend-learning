@@ -1,5 +1,6 @@
 package com.example.step28JPA.repository;
 
+import com.example.step28JPA.model.Department;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
@@ -11,4 +12,10 @@ public class DepartmentRepository {
     private EntityManager entityManager;
 
 
+    public void save(Department department) {
+
+        entityManager.persist(department);
+
+
+    }
 }

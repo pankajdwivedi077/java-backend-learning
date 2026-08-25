@@ -22,7 +22,14 @@ public class Department {
 
     private String name;
 
-    @OneToMany(mappedBy = "department")
+    @OneToMany(mappedBy = "department", cascade = CascadeType.PERSIST)
     private List<Student> studentList = new ArrayList<>();
+
+    public List<Student> getStudentList() {
+        if (this.studentList == null) {
+            this.studentList = new ArrayList<>();
+        }
+        return this.studentList;
+    }
 
 }

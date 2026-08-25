@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.context.annotation.Profile;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,8 +22,15 @@ public class Student {
 
   private String name;
 
-  @ManyToOne(optional = false)
+  @ManyToOne(optional = false, fetch = FetchType.LAZY)
   @JoinColumn(name = "dept_id", nullable = false)
   private Department department;
+
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "profile_id")
+  private Profiless profile;
+
+//  @ManyToMany(fetch = FetchType.LAZY)
+//  private List<Courses> courses;
 
 }
