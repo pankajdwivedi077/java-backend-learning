@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/students")
 public class StudentController {
@@ -28,4 +30,11 @@ public class StudentController {
         Student student = studentService.fetchStudentById(id);
         return ResponseEntity.ok(student);
     }
+
+    @GetMapping("/name/{name}")
+    public ResponseEntity<List<Student>> getAllStudent(@PathVariable String name){
+        List<Student> students = studentService.fetchAll(name);
+        return ResponseEntity.ok(students);
+    }
+
 }
