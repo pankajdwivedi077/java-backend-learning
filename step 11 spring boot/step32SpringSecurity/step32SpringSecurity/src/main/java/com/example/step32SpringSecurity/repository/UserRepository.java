@@ -2,11 +2,13 @@ package com.example.step32SpringSecurity.repository;
 
 import com.example.step32SpringSecurity.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<UserRepository, Long> {
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
 
-    Optional<User> findByUserName(String username);
+    Optional<User> findByUsername(String username);
 
 }
