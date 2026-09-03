@@ -20,7 +20,7 @@ public class UserController {
         this.authservice = authservice;
     }
 
-    @GetMapping()
+    @GetMapping("/hello")
     public String sayHello(){
 
         return "hello";

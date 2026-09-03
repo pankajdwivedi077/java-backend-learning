@@ -15,23 +15,23 @@ import org.springframework.stereotype.Service;
 public class Authservice {
 
     private UserRepository userRepository;
-//    private PasswordEncoder passwordEncoder;
-    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private PasswordEncoder passwordEncoder;
+  //  private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     private RoleRepository roleRepository;
 
-//    @Autowired
-//    public Authservice(UserRepository userRepository, PasswordEncoder passwordEncoder,
-//                       RoleRepository roleRepository){
-//        this.userRepository = userRepository;
-//        this.passwordEncoder = passwordEncoder;
-//        this.roleRepository = roleRepository;
-//    }
-
     @Autowired
-    public Authservice(UserRepository userRepository, RoleRepository roleRepository){
+    public Authservice(UserRepository userRepository, PasswordEncoder passwordEncoder,
+                       RoleRepository roleRepository){
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
     }
+
+//    @Autowired
+//    public Authservice(UserRepository userRepository, RoleRepository roleRepository){
+//        this.userRepository = userRepository;
+//        this.roleRepository = roleRepository;
+//    }
 
     public UserRegisterResponseDto registerUser(UserRegisterRequestDto register) {
 
