@@ -5,6 +5,7 @@ import com.example.step32SpringSecurity.dto.UserRegisterResponseDto;
 import com.example.step32SpringSecurity.service.Authservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
@@ -21,9 +22,9 @@ public class UserController {
     }
 
     @GetMapping("/hello")
-    public String sayHello(){
+    public String sayHello(Authentication authentication){
 
-        return "hello";
+        return "you are logged in as: " + authentication.getName();
     }
 
     @PostMapping("/register")
