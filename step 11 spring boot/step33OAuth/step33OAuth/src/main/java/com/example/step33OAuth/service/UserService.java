@@ -46,4 +46,8 @@ public class UserService {
 
     }
 
+    public Optional<User2> findByProviderAndSubject(String provider, String subject){
+       return userRepository.findByProviderAndProviderSubject(provider, subject);
+    }
+
 }
