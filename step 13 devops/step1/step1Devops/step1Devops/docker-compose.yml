@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  app:
+    build:
+      ports:
+        - "8090:8090"
+      networks:
+         my-network
+
+  postgres:
+    image: postgres:lastest
+    environment:
+      POSTGRES_USER: bell
+      POSTGRES_PASSWORD: chan
+      POSTGRES_DB: bell
+    ports:
+        -5433:5432
+    networks:
+       my-network
+    volumes:
+      - postgres-s-data:/var/lib/postgresql/data
+
+  networks:
+    my-network:
+      driver: bridge
+
+  volumes:
+    postgres-s-data:
