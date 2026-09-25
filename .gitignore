@@ -98,3 +98,4 @@ Thumbs.db
 **/src/main/resources/application-local.properties
 **/src/main/resources/application-local.yml
 **/src/main/resources/config/secrets.*step 13 devops/step3SpringAi/step3SpringAi/src/main/resources/application-secrets.properties
+step 13 devops/step3SpringAi/step3SpringAi/src/main/resources/application-secrets.properties
