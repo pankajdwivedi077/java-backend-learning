@@ -3,6 +3,7 @@ package com.example.step5MicroservicesQuestionS.service;
 import com.example.step5MicroservicesQuestionS.dao.QuestionDao;
 import com.example.step5MicroservicesQuestionS.model.Question;
 import com.example.step5MicroservicesQuestionS.model.QuestionWrapper;
+import com.example.step5MicroservicesQuestionS.model.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -54,7 +55,29 @@ public class QuestionService {
     public ResponseEntity<List<QuestionWrapper>> getQuestionFromId
             (List<Integer> questionIds) {
         List<QuestionWrapper> questionWrappers = new ArrayList<>();
-        
+        List<Question> questions = new ArrayList<>();
+        for(Integer id: questionIds){
+            questions.add(questionDao.findById(id).get());
+        }
+        for(Question q: questions){
+            QuestionWrapper wrapper = new QuestionWrapper();
+            wrapper.setQuestionTitle(q.getQuestionTitle());
+            wrapper.setOption1(q.getOption1());
+            wrapper.setOption2(q.getOption2());
+            wrapper.setOption3(q.getOption3());
+            wrapper.setOption4(q.getOption4());
+            questionWrappers.add(wrapper);
+        }
         return new ResponseEntity<>(questionWrappers, HttpStatus.OK);
+    }
+
+    public ResponseEntity<Integer> getScore(List<Response> responses) {
+        int right = 0;
+        for(Response response1: responses){
+            Question question = questionDao.findById(response1.getId()).get();
+            if(response1.getResponse().equals(question.getRightAnswer()))
+                right++;
+        }
+        return new ResponseEntity<>(right, HttpStatus.OK);
     }
 }

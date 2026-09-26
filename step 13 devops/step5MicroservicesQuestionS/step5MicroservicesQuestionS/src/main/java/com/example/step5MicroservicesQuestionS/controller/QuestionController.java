@@ -2,6 +2,7 @@ package com.example.step5MicroservicesQuestionS.controller;
 
 import com.example.step5MicroservicesQuestionS.model.Question;
 import com.example.step5MicroservicesQuestionS.model.QuestionWrapper;
+import com.example.step5MicroservicesQuestionS.model.Response;
 import com.example.step5MicroservicesQuestionS.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -49,4 +50,8 @@ public class QuestionController {
         return questionService.getQuestionFromId(questionIds);
     }
     // getScore
+    @PostMapping("/getscore")
+    public ResponseEntity<Integer> getScore(@RequestBody List<Response> response){
+        return questionService.getScore(response);
+    }
 }
